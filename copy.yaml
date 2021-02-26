@@ -1,0 +1,9 @@
+---
+- hosts: slave
+  become: yes
+  gather_facts: false
+  tasks:
+    - name: Install application tree
+      copy:
+        src: files/file1
+        dest: /home/ravi

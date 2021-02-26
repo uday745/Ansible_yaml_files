@@ -1,0 +1,22 @@
+---
+- hosts: slave
+  become: true
+  tasks:
+    - name: Install apache
+      yum:
+        name: "httpd"
+        state: "present"
+      tags:
+        - install
+    - name: Deploy static website
+      copy:
+        src: files/index.html
+        dest: /var/www/html/
+      tags:
+        - config
+    - name: Restart apache
+      service:
+        name: httpd
+        state: restarted
+      tags:
+        - restart

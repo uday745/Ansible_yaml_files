@@ -1,0 +1,12 @@
+---
+- hosts: slave
+  become: yes
+  gather_facts: false
+  tasks:
+    - name: Case insensitive password string match
+      expect:
+        command: passwd devops1
+        responses:
+          (?i)password: "devops123"
+  # you don't want to show passwords in your logs
+      
