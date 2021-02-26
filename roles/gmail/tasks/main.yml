@@ -1,0 +1,15 @@
+---
+# tasks file for gmail
+- name: Send a success email for smtp users
+  mail:
+   host: smtp.gmail.com
+   port: 587 
+   secure: starttls
+   charset: utf-8
+   sender: guday93@gmail.com
+   username: guday93@gmail.com
+   password: "{{ password }}"
+   to: G Uday <udayg0778@gmail.com>
+   subject: Installation Update
+   body: 'The installation is complete.'
+   attach: /etc/ansible/ansible.cfg
